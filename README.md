@@ -19,55 +19,54 @@ If you are developing a production application, we recommend updating the config
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    # Hire Hub
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    Hire Hub is a lightweight job board frontend built with React, TypeScript and Vite. It demonstrates a small recruitment workflow with job listings, application forms, mocked APIs, and a clean component-driven UI.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    Key technologies
+    - React + TypeScript
+    - Vite
+    - Tailwind CSS
+    - Redux Toolkit + React Query
+    - MSW (Mock Service Worker) for local API mocking
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    Getting started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+    Prerequisites
+    - Node.js 18+ (or compatible)
+    - npm, yarn or pnpm
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    Install
+
+    ```bash
+    npm install
+    ```
+
+    Available scripts
+    - `npm run dev` — Run the app in development mode (Vite + HMR)
+    - `npm run build` — Build the production bundle (`tsc -b && vite build`)
+    - `npm run preview` — Preview the production build locally
+    - `npm run lint` — Run ESLint
+
+    Mocked API (MSW)
+
+    This project includes MSW handlers under `src/mocks` and the worker file at `public/mockServiceWorker.js`. In development the mock server is enabled so the app runs without a real backend.
+
+    Project structure (high level)
+    - `src/` — application source
+      - `components/` — UI components and pages
+      - `mocks/` — MSW handlers and mock data
+      - `shared/` — API clients
+      - `store/` — Redux store and thunks
+
+    Notes
+    - The project uses Vite; the `dev` script starts a fast local server.
+    - If you need to connect to a real API, disable MSW initialization in `src/main.tsx` or remove the mock handlers.
+
+    Contributing
+    - Feel free to open issues or PRs. Keep changes focused and add tests for new behavior.
+
+    License
+    - Open for the repo owner to decide.
+
+    File: [README.md](README.md#L1)
